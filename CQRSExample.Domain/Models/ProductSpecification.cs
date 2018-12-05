@@ -1,4 +1,4 @@
-﻿using System;
+﻿using CQRSExample.Domain.Extensions.Swagger;
 
 namespace CQRSExample.Domain.Models
 {
@@ -12,8 +12,10 @@ namespace CQRSExample.Domain.Models
 
         public string TypeOfSerializedJson { get; set; }
 
+        [SwaggerExclude]
         public virtual Product Product { get; set; }
 
+        [SwaggerExclude]
         public virtual Specification Specification { get; set; }
     }
 }

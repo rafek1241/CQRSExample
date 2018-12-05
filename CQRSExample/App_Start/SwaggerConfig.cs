@@ -1,6 +1,7 @@
 using System.Web.Http;
 using WebActivatorEx;
 using CQRSExample;
+using CQRSExample.Extensions.Swagger;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
@@ -61,7 +62,7 @@ namespace CQRSExample
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -119,7 +120,7 @@ namespace CQRSExample
                         // If you want to post-modify "complex" Schemas once they've been generated, across the board or for a
                         // specific type, you can wire up one or more Schema filters.
                         //
-                        //c.SchemaFilter<ApplySchemaVendorExtensions>();
+                        c.SchemaFilter<SwaggerExcludeFilter>();
 
                         // In a Swagger 2.0 document, complex types are typically declared globally and referenced by unique
                         // Schema Id. By default, Swashbuckle does NOT use the full type name in Schema Ids. In most cases, this

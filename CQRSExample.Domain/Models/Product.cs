@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CQRSExample.Domain.Extensions.Swagger;
 
 namespace CQRSExample.Domain.Models
 {
@@ -8,8 +9,12 @@ namespace CQRSExample.Domain.Models
 
         public decimal Price { get; set; }
 
+        public long CategoryId { get; set; }
+
+        [SwaggerExclude]
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<ProductSpecification> Specifications { get; set; }
+        [SwaggerExclude]
+        public virtual ICollection<ProductSpecification> ProductSpecifications { get; set; }
     }
 }

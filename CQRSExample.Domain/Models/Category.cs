@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using CQRSExample.Domain.Extensions.Swagger;
 
 namespace CQRSExample.Domain.Models
 {
@@ -10,8 +7,10 @@ namespace CQRSExample.Domain.Models
     {
         public string Name { get; set; }
 
+        [SwaggerExclude]
         public virtual ICollection<Product> Products { get; set; }
 
+        [SwaggerExclude]
         public virtual ICollection<Specification> Specifications { get; set; }
     }
 }
