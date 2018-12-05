@@ -128,9 +128,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CqrsExampleContext.cs" />
-    <Compile Include="Migrations\20181205181223_InitialCreate.cs" />
-    <Compile Include="Migrations\20181205181223_InitialCreate.designer.cs">
-      <DependentUpon>20181205181223_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20181205194852_InitialCreate.cs" />
+    <Compile Include="Migrations\20181205194852_InitialCreate.designer.cs">
+      <DependentUpon>20181205194852_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\CqrsExampleContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CQRSExample.Database.Migrations
 {
     [DbContext(typeof(CqrsExampleContext))]
-    [Migration("20181205181223_InitialCreate")]
+    [Migration("20181205194852_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,7 @@ namespace CQRSExample.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("CategoryId");
+                    b.Property<long>("CategoryId");
 
                     b.Property<Guid>("Guid");
 
@@ -105,7 +105,8 @@ namespace CQRSExample.Database.Migrations
                 {
                     b.HasOne("CQRSExample.Domain.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CQRSExample.Domain.Models.ProductSpecification", b =>

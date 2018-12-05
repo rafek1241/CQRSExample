@@ -40,7 +40,7 @@ namespace CQRSExample.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("CategoryId");
+                    b.Property<long>("CategoryId");
 
                     b.Property<Guid>("Guid");
 
@@ -103,7 +103,8 @@ namespace CQRSExample.Database.Migrations
                 {
                     b.HasOne("CQRSExample.Domain.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CQRSExample.Domain.Models.ProductSpecification", b =>
