@@ -1,4 +1,5 @@
-﻿using CQRSExample.Commands;
+﻿using System.Reflection;
+using CQRSExample.Commands;
 using CQRSExample.Commands.Commands;
 using CQRSExample.Domain.Commands;
 using CQRSExample.Domain.Interfaces;
@@ -13,18 +14,18 @@ namespace CQRSExample.Commands
         {
             RegisterCommandHandlers(serviceRegistry);
             RegisterAsyncCommandHandlers(serviceRegistry);
-
-            serviceRegistry.RegisterAssembly(typeof(CreateProductHandler).Assembly);
         }
 
         public static void RegisterCommandHandlers(IServiceRegistry serviceRegistry)
         {
-            serviceRegistry.Register<ICommandHandler<ICommand>, CommandHandler<ICommand>>();
+            serviceRegistry.RegisterAssembly(typeof(CommandsModule).Assembly,
+                (s, _) => s.IsGenericType && s.GetGenericTypeDefinition() == typeof(ICommandHandler<>));
         }
 
         public static void RegisterAsyncCommandHandlers(IServiceRegistry serviceRegistry)
         {
-            serviceRegistry.Register<IAsyncCommandHandler<ICommand>, CommandHandler<ICommand>>();
+            serviceRegistry.RegisterAssembly(typeof(CommandsModule).Assembly,
+                (s, _) => s.IsGenericType && s.GetGenericTypeDefinition() == typeof(IAsyncCommandHandler<>));
         }
     }
 }
