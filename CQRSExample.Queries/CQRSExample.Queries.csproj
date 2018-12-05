@@ -54,8 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\CategoryQuery.cs" />
     <Compile Include="Implementation\ProductQuery.cs" />
     <Compile Include="Implementation\Query.cs" />
+    <Compile Include="Interface\ICategoryQuery.cs" />
     <Compile Include="Interface\IProductQuery.cs" />
     <Compile Include="Interface\IQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

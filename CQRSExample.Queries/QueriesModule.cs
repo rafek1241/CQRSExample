@@ -13,6 +13,9 @@ namespace CQRSExample.Queries
         {
             serviceRegistry.Register<IProductQuery>(
                 (factory) => new ProductQuery(factory.GetInstance<string>(ConnectionStrings.ReadDatabase)));
+
+            serviceRegistry.Register<ICategoryQuery>(
+                (factory) => new CategoryQuery(factory.GetInstance<string>(ConnectionStrings.ReadDatabase)));
         }
     }
 }
