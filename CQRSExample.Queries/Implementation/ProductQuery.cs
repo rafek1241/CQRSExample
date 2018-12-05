@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,6 +32,17 @@ namespace CQRSExample.Queries.Implementation
             using (var connection = new SqlConnection(Connection))
             {
                 var result = await connection.QueryAsync<Product>(sql, new { ProductId = id });
+                return result.SingleOrDefault() ?? throw new KeyNotFoundException();
+            }
+        }
+        
+        public async Task<Product> GetProduct(Guid guid)
+        {
+            var sql = "select * from dbo.Products where guid=@ProductGuid";
+
+            using (var connection = new SqlConnection(Connection))
+            {
+                var result = await connection.QueryAsync<Product>(sql, new { ProductGuid = guid});
                 return result.SingleOrDefault() ?? throw new KeyNotFoundException();
             }
         }

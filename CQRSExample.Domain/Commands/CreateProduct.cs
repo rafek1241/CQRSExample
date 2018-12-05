@@ -1,4 +1,5 @@
-﻿using CQRSExample.Domain.Interfaces;
+﻿using System;
+using CQRSExample.Domain.Interfaces;
 using CQRSExample.Domain.Models;
 
 namespace CQRSExample.Domain.Commands
@@ -10,6 +11,8 @@ namespace CQRSExample.Domain.Commands
         public CreateProduct(Product product)
         {
             Product = product;
+
+            Product.Guid = Guid.NewGuid();
         }
     }
 }

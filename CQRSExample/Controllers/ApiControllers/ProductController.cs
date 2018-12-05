@@ -11,6 +11,7 @@ using CQRSExample.Queries.Interface;
 
 namespace CQRSExample.Controllers.ApiControllers
 {
+    [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
         private readonly IProductQuery _productQuery;
@@ -38,6 +39,20 @@ namespace CQRSExample.Controllers.ApiControllers
             return Ok(product);
         }
 
+        /// <summary>
+        /// Get product with specified id.
+        /// </summary>
+        /// <param name="id">Guid ID of product to find</param>
+        /// <returns>Http response with product</returns>
+        [HttpGet]
+        [Route("{guid}")]
+        public async Task<IHttpActionResult> Get(Guid guid)
+        {
+            var product = await _productQuery.GetProduct(guid);
+
+            return Ok(product);
+        }
+
         // POST api/values
         [HttpPost]
         public async Task<IHttpActionResult> PostAsync([FromBody]CreateProduct command)
@@ -46,7 +61,7 @@ namespace CQRSExample.Controllers.ApiControllers
             {
                 await _commandBus.SendAsync(command);
 
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Created, command.Product));
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Created, command.Product.Guid));
             }
             catch (Exception error)
             {

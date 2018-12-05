@@ -47,6 +47,7 @@
     <Compile Include="Enums\ConnectionStrings.cs" />
     <Compile Include="Events\ProductEvents.cs" />
     <Compile Include="Exceptions\CqrsCustomException.cs" />
+    <Compile Include="Extensions\Swagger\SwaggerExcludeAttribute.cs" />
     <Compile Include="Interfaces\IAsyncCommandHandler.cs" />
     <Compile Include="Interfaces\IAsyncEventHandler.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
@@ -62,6 +63,5 @@
     <Compile Include="Models\Specification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
