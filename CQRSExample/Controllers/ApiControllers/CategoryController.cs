@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using CQRSExample.Domain.Commands;
+using CQRSExample.Domain.Interfaces;
 using CQRSExample.Domain.Models;
 using CQRSExample.Queries.Interface;
 
@@ -11,10 +15,12 @@ namespace CQRSExample.Controllers.ApiControllers
     public class CategoryController : ApiController
     {
         private readonly ICategoryQuery _categoryQuery;
+        private readonly ICommandBus _commandBus;
 
-        public CategoryController(ICategoryQuery categoryQuery)
+        public CategoryController(ICategoryQuery categoryQuery, ICommandBus commandBus)
         {
             _categoryQuery = categoryQuery;
+            _commandBus = commandBus;
         }
 
         // GET api/<controller>
@@ -42,18 +48,42 @@ namespace CQRSExample.Controllers.ApiControllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public async Task<IHttpActionResult> Post([FromBody]CreateCategory value)
         {
+            try
+            {
+                await _commandBus.SendAsync(value);
+
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Created, value.Category.Guid));
+            }
+            catch (Exception error)
+            {
+                return InternalServerError(error);
+            }
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        public async Task<IHttpActionResult> Put(long id, [FromBody]UpdateCategory value)
         {
+            try
+            {
+                value.Id = id;
+
+                await _commandBus.SendAsync(value);
+
+                return Ok(value.Category);
+            }
+            catch (Exception error)
+            {
+                return InternalServerError(error);
+            }
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        public async Task Delete(long id)
         {
+            var command = new RemoveCategory(id);
+            await _commandBus.SendAsync(command);
         }
     }
 }

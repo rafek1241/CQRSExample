@@ -6,35 +6,39 @@ namespace CQRSExample.Domain.Commands
 {
     public class CreateCategory : ICommand
     {
-        private readonly Category _category;
+        public Category Category { get; set; }
 
         public CreateCategory(Category category)
         {
             category.Guid = Guid.NewGuid();
 
-            _category = category;
+            Category = category;
         }
     }
 
     public class UpdateCategory : ICommand
     {
-        private readonly long _id;
-        private readonly Category _category;
+        public long Id { get; set; }
+        public Category Category { get; set; }
+
+        public UpdateCategory(Category category) : this(0, category)
+        {
+        }
 
         public UpdateCategory(long id, Category category)
         {
-            _id = id;
-            _category = category;
+            Id = id;
+            Category = category;
         }
     }
 
     public class RemoveCategory : ICommand
     {
-        private readonly Category _category;
+        public long CategoryId { get; set; }
 
-        public RemoveCategory(Category category)
+        public RemoveCategory(long categoryId)
         {
-            _category = category;
+            CategoryId = categoryId;
         }
     }
 }
