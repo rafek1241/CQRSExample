@@ -76,7 +76,7 @@ namespace CQRSExample.Controllers.ApiControllers
             {
                 await _commandBus.SendAsync(command);
 
-                return ResponseMessage(Request.CreateResponse(HttpStatusCode.Created, command.Product));
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, command.Product));
             }
             catch (Exception error)
             {
