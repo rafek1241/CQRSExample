@@ -1,21 +1,22 @@
 ﻿using System.Threading.Tasks;
+using CQRSExample.Domain.Base;
 using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
 
 namespace CQRSExample.Events.Events.Product
 {
-    public class SavedProductHandler : EventHandler<SavedProduct>
+    public class SavedProductHandler : BaseHandler, IEventHandler<SavedProduct>, IAsyncEventHandler<SavedProduct>
     {
         public SavedProductHandler(IEventBus eventBus) : base(eventBus)
         {
         }
 
-        public override void Handle(SavedProduct @event)
+        public void Handle(SavedProduct @event)
         {
             //The end of sync insert event
         }
 
-        public override Task HandleAsync(SavedProduct @event)
+        public Task HandleAsync(SavedProduct @event)
         {
             //The end of async insert event
 

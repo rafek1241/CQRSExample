@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
 using CQRSExample.Database;
+using CQRSExample.Domain.Base;
 using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
 
 namespace CQRSExample.Events.Events.Product
 {
-    public class InsertProductHandler : EventHandler<InsertProduct>
+    public class InsertProductHandler : BaseHandler, IEventHandler<InsertProduct>, IAsyncEventHandler<InsertProduct>
     {
         private readonly CqrsExampleContext _context;
 
@@ -14,7 +15,7 @@ namespace CQRSExample.Events.Events.Product
             _context = context;
         }
 
-        public override void Handle(InsertProduct @event)
+        public void Handle(InsertProduct @event)
         {
             _context.Products.Add(@event.Product);
 
@@ -24,7 +25,7 @@ namespace CQRSExample.Events.Events.Product
             _eventBus.Publish(savedProductEvent);
         }
 
-        public override async Task HandleAsync(InsertProduct @event)
+        public async Task HandleAsync(InsertProduct @event)
         {
             _context.Products.Add(@event.Product);
 
