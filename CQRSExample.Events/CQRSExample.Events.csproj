@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventsModule.cs" />
+    <Compile Include="Events\AsyncEventHandler.cs" />
     <Compile Include="Events\InsertProductHandler.cs" />
     <Compile Include="Events\EventHandler.cs" />
     <Compile Include="Events\SavedProductHandler.cs" />
