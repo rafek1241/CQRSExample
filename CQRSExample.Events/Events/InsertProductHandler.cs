@@ -1,11 +1,7 @@
-﻿using System;
-using System.Data;
-using System.Data.Common;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CQRSExample.Database;
-using CQRSExample.Domain.Events.ProductEvents;
+using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace CQRSExample.Events.Events
 {

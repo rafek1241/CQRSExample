@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CQRSExample.Domain.Commands;
-using CQRSExample.Domain.Events.ProductEvents;
+using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
 
 namespace CQRSExample.Commands.Commands

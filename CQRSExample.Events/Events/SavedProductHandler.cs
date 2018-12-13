@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CQRSExample.Domain.Events.ProductEvents;
+﻿using System.Threading.Tasks;
+using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
 
 namespace CQRSExample.Events.Events

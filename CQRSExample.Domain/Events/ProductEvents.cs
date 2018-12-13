@@ -1,7 +1,7 @@
 ﻿using CQRSExample.Domain.Interfaces;
 using CQRSExample.Domain.Models;
 
-namespace CQRSExample.Domain.Events.ProductEvents
+namespace CQRSExample.Domain.Events
 {
     public class FetchedProducts : IEvent
     {
