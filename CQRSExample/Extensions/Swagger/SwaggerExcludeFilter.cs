@@ -21,11 +21,9 @@ namespace CQRSExample.Extensions.Swagger
                     != null);
 
             foreach (var excludedProperty in excludedProperties)
-            {
                 if (!string.IsNullOrWhiteSpace(schema.properties.Keys.FirstOrDefault(x =>
                     string.Equals(x, excludedProperty.Name, StringComparison.CurrentCultureIgnoreCase))))
                     schema.properties.Remove(excludedProperty.Name);
-            }
         }
 
         #endregion

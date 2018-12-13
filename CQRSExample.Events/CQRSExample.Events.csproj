@@ -121,9 +121,12 @@
   <ItemGroup>
     <Compile Include="EventsModule.cs" />
     <Compile Include="Events\AsyncEventHandler.cs" />
-    <Compile Include="Events\InsertProductHandler.cs" />
+    <Compile Include="Events\Category\InsertCategoryHandler.cs" />
+    <Compile Include="Events\Product\InsertProductHandler.cs" />
     <Compile Include="Events\EventHandler.cs" />
-    <Compile Include="Events\SavedProductHandler.cs" />
+    <Compile Include="Events\Product\SavedProductHandler.cs" />
+    <Compile Include="Events\Category\UpdateCategoryHandler.cs" />
+    <Compile Include="Events\Category\ValidateCategoryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,8 @@ namespace CQRSExample.Database
 
             try
             {
-                writeDatabaseConnectionString = ConfigurationManager.ConnectionStrings["writeDatabase"].ConnectionString;
+                writeDatabaseConnectionString =
+                    ConfigurationManager.ConnectionStrings["writeDatabase"].ConnectionString;
             }
             catch (Exception error)
             {

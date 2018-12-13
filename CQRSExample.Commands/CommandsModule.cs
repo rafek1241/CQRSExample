@@ -1,11 +1,9 @@
-﻿using System.Reflection;
-using CQRSExample.Commands;
-using CQRSExample.Commands.Commands;
-using CQRSExample.Domain.Commands;
+﻿using CQRSExample.Commands;
 using CQRSExample.Domain.Interfaces;
 using LightInject;
 
 [assembly: CompositionRootType(typeof(CommandsModule))]
+
 namespace CQRSExample.Commands
 {
     public class CommandsModule : ICompositionRoot

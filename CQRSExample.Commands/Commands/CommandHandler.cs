@@ -12,8 +12,8 @@ namespace CQRSExample.Commands.Commands
             _eventBus = eventBus;
         }
 
-        public abstract void Handle(T command);
-
         public abstract Task HandleAsync(T command);
+
+        public abstract void Handle(T command);
     }
 }

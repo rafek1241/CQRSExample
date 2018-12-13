@@ -1,26 +1,23 @@
-﻿using CQRSExample.Domain.Interfaces;
+﻿using System;
+using CQRSExample.Domain.Interfaces;
 using CQRSExample.Domain.Models;
-using System;
 
 namespace CQRSExample.Domain.Commands
 {
     public class CreateCategory : ICommand
     {
-        public Category Category { get; set; }
-
         public CreateCategory(Category category)
         {
             category.Guid = Guid.NewGuid();
 
             Category = category;
         }
+
+        public Category Category { get; set; }
     }
 
     public class UpdateCategory : ICommand
     {
-        public long Id { get; set; }
-        public Category Category { get; set; }
-
         public UpdateCategory(Category category) : this(0, category)
         {
         }
@@ -30,15 +27,18 @@ namespace CQRSExample.Domain.Commands
             Id = id;
             Category = category;
         }
+
+        public long Id { get; set; }
+        public Category Category { get; set; }
     }
 
     public class RemoveCategory : ICommand
     {
-        public long CategoryId { get; set; }
-
         public RemoveCategory(long categoryId)
         {
             CategoryId = categoryId;
         }
+
+        public long CategoryId { get; set; }
     }
 }

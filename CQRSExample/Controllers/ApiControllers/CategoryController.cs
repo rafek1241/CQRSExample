@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using CQRSExample.Domain.Commands;
 using CQRSExample.Domain.Interfaces;
-using CQRSExample.Domain.Models;
 using CQRSExample.Queries.Interface;
 
 namespace CQRSExample.Controllers.ApiControllers
@@ -48,7 +46,7 @@ namespace CQRSExample.Controllers.ApiControllers
         }
 
         // POST api/<controller>
-        public async Task<IHttpActionResult> Post([FromBody]CreateCategory value)
+        public async Task<IHttpActionResult> Post([FromBody] CreateCategory value)
         {
             try
             {
@@ -63,7 +61,7 @@ namespace CQRSExample.Controllers.ApiControllers
         }
 
         // PUT api/<controller>/5
-        public async Task<IHttpActionResult> Put(long id, [FromBody]UpdateCategory value)
+        public async Task<IHttpActionResult> Put(long id, [FromBody] UpdateCategory value)
         {
             try
             {

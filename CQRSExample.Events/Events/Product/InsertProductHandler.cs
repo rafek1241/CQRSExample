@@ -3,7 +3,7 @@ using CQRSExample.Database;
 using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
 
-namespace CQRSExample.Events.Events
+namespace CQRSExample.Events.Events.Product
 {
     public class InsertProductHandler : EventHandler<InsertProduct>
     {

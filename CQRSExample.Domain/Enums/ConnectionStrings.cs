@@ -3,7 +3,7 @@
     public static class ConnectionStrings
     {
         /// <summary>
-        /// databases connection string names inside ConnectionStrings.config
+        ///     databases connection string names inside ConnectionStrings.config
         /// </summary>
         public const string
             ReadDatabase = "readDatabase",

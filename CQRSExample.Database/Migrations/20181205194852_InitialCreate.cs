@@ -9,25 +9,24 @@ namespace CQRSExample.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
+                "Categories",
+                table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                });
+                constraints: table => { table.PrimaryKey("PK_Categories", x => x.Id); });
 
             migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
+                "Products",
+                table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
@@ -37,19 +36,20 @@ namespace CQRSExample.Database.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
+                        "FK_Products_Categories_CategoryId",
+                        x => x.CategoryId,
+                        "Categories",
+                        "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Specifications",
-                columns: table => new
+                "Specifications",
+                table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     CategoryId = table.Column<long>(nullable: false)
@@ -58,19 +58,20 @@ namespace CQRSExample.Database.Migrations
                 {
                     table.PrimaryKey("PK_Specifications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Specifications_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
+                        "FK_Specifications_Categories_CategoryId",
+                        x => x.CategoryId,
+                        "Categories",
+                        "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductSpecifications",
-                columns: table => new
+                "ProductSpecifications",
+                table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy",
+                            SqlServerValueGenerationStrategy.IdentityColumn),
                     Guid = table.Column<Guid>(nullable: false),
                     ProductId = table.Column<long>(nullable: false),
                     SpecificationId = table.Column<long>(nullable: false),
@@ -81,53 +82,53 @@ namespace CQRSExample.Database.Migrations
                 {
                     table.PrimaryKey("PK_ProductSpecifications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProductSpecifications_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
+                        "FK_ProductSpecifications_Products_ProductId",
+                        x => x.ProductId,
+                        "Products",
+                        "Id",
                         onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
-                        name: "FK_ProductSpecifications_Specifications_SpecificationId",
-                        column: x => x.SpecificationId,
-                        principalTable: "Specifications",
-                        principalColumn: "Id",
+                        "FK_ProductSpecifications_Specifications_SpecificationId",
+                        x => x.SpecificationId,
+                        "Specifications",
+                        "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
-                column: "CategoryId");
+                "IX_Products_CategoryId",
+                "Products",
+                "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductSpecifications_ProductId",
-                table: "ProductSpecifications",
-                column: "ProductId");
+                "IX_ProductSpecifications_ProductId",
+                "ProductSpecifications",
+                "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductSpecifications_SpecificationId",
-                table: "ProductSpecifications",
-                column: "SpecificationId");
+                "IX_ProductSpecifications_SpecificationId",
+                "ProductSpecifications",
+                "SpecificationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Specifications_CategoryId",
-                table: "Specifications",
-                column: "CategoryId");
+                "IX_Specifications_CategoryId",
+                "Specifications",
+                "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ProductSpecifications");
+                "ProductSpecifications");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                "Products");
 
             migrationBuilder.DropTable(
-                name: "Specifications");
+                "Specifications");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                "Categories");
         }
     }
 }

@@ -3,6 +3,7 @@ using CQRSExample.Events;
 using LightInject;
 
 [assembly: CompositionRootType(typeof(EventsModule))]
+
 namespace CQRSExample.Events
 {
     public class EventsModule : ICompositionRoot

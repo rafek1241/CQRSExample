@@ -5,12 +5,10 @@ namespace CQRSExample.Domain.Events
 {
     public class FetchedProducts : IEvent
     {
-
     }
 
     public class FetchedProduct : IEvent
     {
-
     }
 
     public class InsertProduct : IEvent
@@ -35,11 +33,9 @@ namespace CQRSExample.Domain.Events
 
     public class UpdatedProduct : IEvent
     {
-
     }
 
     public class ProductRemoved : IEvent
     {
-
     }
 }

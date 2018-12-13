@@ -7,6 +7,10 @@ namespace CQRSExample.Commands.Commands
 {
     public class RemoveProductHandler : CommandHandler<RemoveProduct>
     {
+        public RemoveProductHandler(IEventBus eventBus) : base(eventBus)
+        {
+        }
+
         public override void Handle(RemoveProduct command)
         {
             throw new NotImplementedException();
@@ -15,10 +19,6 @@ namespace CQRSExample.Commands.Commands
         public override Task HandleAsync(RemoveProduct command)
         {
             throw new NotImplementedException();
-        }
-
-        public RemoveProductHandler(IEventBus eventBus) : base(eventBus)
-        {
         }
     }
 }

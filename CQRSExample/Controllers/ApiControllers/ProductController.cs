@@ -14,8 +14,8 @@ namespace CQRSExample.Controllers.ApiControllers
     [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
-        private readonly IProductQuery _productQuery;
         private readonly ICommandBus _commandBus;
+        private readonly IProductQuery _productQuery;
 
         public ProductController(IProductQuery query, ICommandBus commandBus)
         {
@@ -24,7 +24,7 @@ namespace CQRSExample.Controllers.ApiControllers
         }
 
         /// <summary>
-        /// Get all products
+        ///     Get all products
         /// </summary>
         /// <returns>Collection of products</returns>
         public async Task<IEnumerable<Product>> Get()
@@ -40,7 +40,7 @@ namespace CQRSExample.Controllers.ApiControllers
         }
 
         /// <summary>
-        /// Get product with specified id.
+        ///     Get product with specified id.
         /// </summary>
         /// <param name="id">Guid ID of product to find</param>
         /// <returns>Http response with product</returns>
@@ -55,7 +55,7 @@ namespace CQRSExample.Controllers.ApiControllers
 
         // POST api/values
         [HttpPost]
-        public async Task<IHttpActionResult> PostAsync([FromBody]CreateProduct command)
+        public async Task<IHttpActionResult> PostAsync([FromBody] CreateProduct command)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace CQRSExample.Controllers.ApiControllers
         }
 
         // PUT api/values/5
-        public async Task<IHttpActionResult> Put([FromBody]UpdateProduct command)
+        public async Task<IHttpActionResult> Put([FromBody] UpdateProduct command)
         {
             try
             {

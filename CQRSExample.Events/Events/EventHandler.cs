@@ -12,8 +12,8 @@ namespace CQRSExample.Events.Events
             _eventBus = eventBus;
         }
 
-        public abstract void Handle(T @event);
-
         public abstract Task HandleAsync(T @event);
+
+        public abstract void Handle(T @event);
     }
 }

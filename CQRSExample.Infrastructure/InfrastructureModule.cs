@@ -9,6 +9,7 @@ using LightInject;
 using Microsoft.EntityFrameworkCore;
 
 [assembly: CompositionRootType(typeof(InfrastructureModule))]
+
 namespace CQRSExample.Infrastructure
 {
     public class InfrastructureModule : ICompositionRoot
@@ -22,7 +23,7 @@ namespace CQRSExample.Infrastructure
             serviceRegistry.Register<CqrsExampleContext>();
             serviceRegistry.Register<DbContextOptions<CqrsExampleContext>>();
             serviceRegistry.RegisterSingleton(
-                (factory) => ConfigurationManager.ConnectionStrings[ConnectionStrings.WriteDatabase].ConnectionString,
+                factory => ConfigurationManager.ConnectionStrings[ConnectionStrings.WriteDatabase].ConnectionString,
                 ConnectionStrings.WriteDatabase);
         }
     }

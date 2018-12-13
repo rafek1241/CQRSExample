@@ -2,7 +2,7 @@
 using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
 
-namespace CQRSExample.Events.Events
+namespace CQRSExample.Events.Events.Product
 {
     public class SavedProductHandler : EventHandler<SavedProduct>
     {
@@ -13,8 +13,6 @@ namespace CQRSExample.Events.Events
         public override void Handle(SavedProduct @event)
         {
             //The end of sync insert event
-
-            return;
         }
 
         public override Task HandleAsync(SavedProduct @event)

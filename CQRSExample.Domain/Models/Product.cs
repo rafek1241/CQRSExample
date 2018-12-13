@@ -11,10 +11,8 @@ namespace CQRSExample.Domain.Models
 
         public long CategoryId { get; set; }
 
-        [SwaggerExclude]
-        public virtual Category Category { get; set; }
+        [SwaggerExclude] public virtual Category Category { get; set; }
 
-        [SwaggerExclude]
-        public virtual ICollection<ProductSpecification> ProductSpecifications { get; set; }
+        [SwaggerExclude] public virtual ICollection<ProductSpecification> ProductSpecifications { get; set; }
     }
 }

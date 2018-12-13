@@ -7,10 +7,8 @@ namespace CQRSExample.Domain.Models
     {
         public string Name { get; set; }
 
-        [SwaggerExclude]
-        public virtual ICollection<Product> Products { get; set; }
+        [SwaggerExclude] public virtual ICollection<Product> Products { get; set; }
 
-        [SwaggerExclude]
-        public virtual ICollection<Specification> Specifications { get; set; }
+        [SwaggerExclude] public virtual ICollection<Specification> Specifications { get; set; }
     }
 }

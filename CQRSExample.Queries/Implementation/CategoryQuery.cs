@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using CQRSExample.Domain.Models;
 using CQRSExample.Queries.Interface;
@@ -12,6 +10,10 @@ namespace CQRSExample.Queries.Implementation
 {
     public class CategoryQuery : Query, ICategoryQuery
     {
+        public CategoryQuery(string connection) : base(connection)
+        {
+        }
+
         public async Task<IEnumerable<Category>> GetCategories()
         {
             var sql = "select * from dbo.categories";
@@ -38,12 +40,8 @@ namespace CQRSExample.Queries.Implementation
 
             using (var conn = new SqlConnection(Connection))
             {
-                return await conn.QuerySingleOrDefaultAsync<Category>(sql, new { CategoryId = guid });
+                return await conn.QuerySingleOrDefaultAsync<Category>(sql, new {CategoryId = guid});
             }
-        }
-
-        public CategoryQuery(string connection) : base(connection)
-        {
         }
     }
 }

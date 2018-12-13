@@ -9,8 +9,8 @@ namespace CQRSExample.Extensions
         public static void RegisterReadDatabase(this ServiceContainer container)
         {
             container.RegisterSingleton(
-                (factory) => ConfigurationManager.ConnectionStrings[ConnectionStrings.ReadDatabase].ConnectionString,
-                             ConnectionStrings.ReadDatabase);
+                factory => ConfigurationManager.ConnectionStrings[ConnectionStrings.ReadDatabase].ConnectionString,
+                ConnectionStrings.ReadDatabase);
         }
     }
 }
