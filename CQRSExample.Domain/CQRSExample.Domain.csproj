@@ -46,6 +46,7 @@
     <Compile Include="Commands\RemoveProduct.cs" />
     <Compile Include="Commands\UpdateProduct.cs" />
     <Compile Include="Enums\ConnectionStrings.cs" />
+    <Compile Include="Events\CategoryEvents.cs" />
     <Compile Include="Events\ProductEvents.cs" />
     <Compile Include="Exceptions\CqrsCustomException.cs" />
     <Compile Include="Extensions\Swagger\SwaggerExcludeAttribute.cs" />
