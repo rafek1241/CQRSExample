@@ -1,4 +1,4 @@
-# CQRS & ES example
+# CQRS example
 ## Introduction
 
 This is sample project to test the CQRS pattern in "live" action with Event sourcing.
