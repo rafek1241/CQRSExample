@@ -136,6 +136,7 @@
     <Compile Include="Events\Category\UpdateCategoryHandler.cs" />
     <Compile Include="Events\Category\ValidateCategoryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\CategoryValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
