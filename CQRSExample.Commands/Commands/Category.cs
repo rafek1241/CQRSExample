@@ -2,7 +2,10 @@
 using System.Threading.Tasks;
 using CQRSExample.Domain.Base;
 using CQRSExample.Domain.Commands;
+using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
+using RemoveCategory = CQRSExample.Domain.Commands.RemoveCategory;
+using UpdateCategory = CQRSExample.Domain.Commands.UpdateCategory;
 
 namespace CQRSExample.Commands.Commands
 {
@@ -12,9 +15,9 @@ namespace CQRSExample.Commands.Commands
         {
         }
 
-        public Task HandleAsync(CreateCategory command)
+        public async Task HandleAsync(CreateCategory command)
         {
-            throw new NotImplementedException();
+            await _eventBus.PublishAsync(new ValidateCategory(command.Category));
         }
     }
 

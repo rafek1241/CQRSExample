@@ -5,15 +5,21 @@ using CQRSExample.Domain.Interfaces;
 
 namespace CQRSExample.Events.Events.Category
 {
-    public class ValidateCategoryHandler : BaseHandler, IAsyncEventHandler<InsertCategory>
+    public class ValidateCategoryHandler : BaseHandler, IAsyncEventHandler<ValidateCategory>
     {
         public ValidateCategoryHandler(IEventBus eventBus) : base(eventBus)
         {
         }
 
-        public Task HandleAsync(InsertCategory @event)
+        public async Task HandleAsync(ValidateCategory @event)
         {
-            throw new System.NotImplementedException();
+            Validate(@event.Category);
+            await _eventBus.PublishAsync(new InsertCategory(@event.Category));
+        }
+
+        private void Validate(Domain.Models.Category eventCategory)
+        {
+            //There will be validation of category before insert to the database.
         }
     }
 }
