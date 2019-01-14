@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using CQRSExample.Database;
 using CQRSExample.Domain.Base;
 using CQRSExample.Domain.Events;
 using CQRSExample.Domain.Interfaces;
@@ -7,13 +8,17 @@ namespace CQRSExample.Events.Events.Category
 {
     public class UpdateCategoryHandler : BaseHandler, IAsyncEventHandler<UpdateCategory>
     {
-        public UpdateCategoryHandler(IEventBus eventBus) : base(eventBus)
+        private readonly CqrsExampleContext _context;
+
+        public UpdateCategoryHandler(IEventBus eventBus, CqrsExampleContext context) : base(eventBus)
         {
+            _context = context;
         }
 
-        public Task HandleAsync(UpdateCategory @event)
+        public async Task HandleAsync(UpdateCategory @event)
         {
-            throw new System.NotImplementedException();
+            _context.Categories.Update(@event.Category);
+            await _context.SaveChangesAsync();
         }
     }
 }

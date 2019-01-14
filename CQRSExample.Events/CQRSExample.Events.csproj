@@ -130,6 +130,7 @@
     <Compile Include="EventsModule.cs" />
     <Compile Include="Events\AsyncEventHandler.cs" />
     <Compile Include="Events\Category\InsertCategoryHandler.cs" />
+    <Compile Include="Events\Category\RemoveCategoryHandler.cs" />
     <Compile Include="Events\Product\InsertProductHandler.cs" />
     <Compile Include="Events\EventHandler.cs" />
     <Compile Include="Events\Product\SavedProductHandler.cs" />
