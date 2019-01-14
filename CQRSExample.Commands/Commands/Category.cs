@@ -15,9 +15,9 @@ namespace CQRSExample.Commands.Commands
         {
         }
 
-        public async Task HandleAsync(CreateCategory command)
+        public Task HandleAsync(CreateCategory command)
         {
-            await _eventBus.PublishAsync(new ValidateCategory(command.Category));
+            return _eventBus.PublishAsync(new ValidateCategory(command.Category));
         }
     }
 
@@ -29,7 +29,7 @@ namespace CQRSExample.Commands.Commands
 
         public Task HandleAsync(UpdateCategory command)
         {
-            throw new NotImplementedException();
+            return _eventBus.PublishAsync(new Domain.Events.UpdateCategory(command.Category));
         }
     }
 
@@ -41,7 +41,7 @@ namespace CQRSExample.Commands.Commands
 
         public Task HandleAsync(RemoveCategory command)
         {
-            throw new NotImplementedException();
+            return _eventBus.PublishAsync(new Domain.Events.RemoveCategory(command.CategoryId));
         }
     }
 }
